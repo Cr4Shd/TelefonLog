@@ -9,16 +9,19 @@ namespace TelefonLog.Utils
     
     class CallLog
     {
+        public string CallBackNumber { get; set; }
+        public string DateTime { get; set; }
         public string CName { get; set; }
         public string Text { get; set; }
         public string Time { get; set; }
 
-        public CallLog(string name, string text, string time)
+        public CallLog(string name, string text, string time, string numb, string dateTime)
         {
             this.CName = name;
             this.Text = text;
             this.Time = time;
-            
+            this.CallBackNumber = numb;
+            this.DateTime = dateTime;
         }
     }
 }

@@ -27,11 +27,12 @@ public partial class MainWindow : Window
 
     private void SaveCallInDB(object sender, RoutedEventArgs e)
     {
-        CallLog cl = new(Name_txfld.Text, Message_txfld.Text, Time_txfld.Text);
+        CallLog cl = new(Name_txfld.Text, Message_txfld.Text, Time_txfld.Text, TelNum_txfld.Text, DateTime.Now.ToString());
         DBManager.InsertCallInDB(cl);
         Name_txfld.Text = "";
         Message_txfld.Text = "";
         Time_txfld.Text = "";
+        TelNum_txfld.Text = "";
     }
     private void PopulateCalls()
     {
@@ -40,6 +41,14 @@ public partial class MainWindow : Window
 
     private void RecentCalls_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
+        var x = (ListView)sender;
+        var y = (CallLog)x.SelectedItem;
+
+        if (y != null)
+        {
+            MessageBox.Show(y.Text);
+        }
+        
         
     }
 }
