@@ -40,6 +40,6 @@ public partial class MainWindow : Window
 
     private void RecentCalls_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
-        return null;
+        
     }
 }
