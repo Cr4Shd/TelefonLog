@@ -1,0 +1,26 @@
+﻿<Window x:Class="TelefonLog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TelefonLog"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="650">
+    <Grid>
+        
+        <TextBox x:Name="Name_txfld" HorizontalAlignment="Left" Margin="29,28,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272" Height="23"/>
+        <TextBox x:Name="Message_txfld" HorizontalAlignment="Left" Margin="29,69,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272" Height="148"/>
+        <TextBox x:Name="Time_txfld" HorizontalAlignment="Left" Margin="29,243,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272"/>
+        <Button Content="Speichern" HorizontalAlignment="Left" Margin="29,338,0,0" VerticalAlignment="Top" Height="57" Width="245" Click="SaveCallInDB"/>
+        
+        <ListView x:Name="RecentCalls_View" Margin="351,28,72,39" MouseDoubleClick="RecentCalls_View_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Alle Anrufe" DisplayMemberBinding="{Binding CName}"/>
+                    <GridViewColumn Header="Zeit" DisplayMemberBinding="{Binding Time}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
