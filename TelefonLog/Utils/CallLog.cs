@@ -17,8 +17,17 @@ namespace TelefonLog.Utils
         public int IsMedical { get; set; }
         public string CallBound { get; set; }
         public string CallID { get; private set; }
-        
 
+        /// <summary>
+        /// Konstruktor für neue CallLog Elemente
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="text"></param>
+        /// <param name="time"></param>
+        /// <param name="numb"></param>
+        /// <param name="dateTime"></param>
+        /// <param name="ismed"></param>
+        /// <param name="bound"></param>
         public CallLog(string name, string text, string time, string numb, string dateTime, int ismed, string bound)
         {
             this.CName = name;
@@ -30,6 +39,17 @@ namespace TelefonLog.Utils
             this.CallBound = bound;
             this.CallID = Guid.NewGuid().ToString();
         }
+        /// <summary>
+        /// Konstruktor für Elemente aus der Datenbank
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="text"></param>
+        /// <param name="time"></param>
+        /// <param name="numb"></param>
+        /// <param name="dateTime"></param>
+        /// <param name="ismed"></param>
+        /// <param name="bound"></param>
+        /// <param name="callid"></param>
         public CallLog(string name, string text, string time, string numb, string dateTime, int ismed, string bound, string callid)
         {
             this.CName = name;

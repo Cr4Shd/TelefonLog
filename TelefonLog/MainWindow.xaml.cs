@@ -25,7 +25,11 @@ public partial class MainWindow : Window
         PopulateCalls();
         DBManager.OnDBItemUpdate += PopulateCalls;
     }
-
+    /// <summary>
+    /// Button-Methode zum speichern eines aktiven Vorgangs
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void SaveCallInDB(object sender, RoutedEventArgs e)
     {
         CallLog cl = new(Name_txfld.Text, Message_txfld.Text, Time_txfld.Text, TelNum_txfld.Text, DateTime.Now.ToString(), ConvertBoolToInt(), GetBounding());
@@ -37,24 +41,20 @@ public partial class MainWindow : Window
         MedicalChkBx.IsChecked = false;
         OutBoundChkBx.IsChecked = false;
     }
+    /// <summary>
+    /// Aktualisierungsmethode
+    /// </summary>
     private void PopulateCalls()
     {
         RecentCalls_View.ItemsSource = DBManager.GetAllCallsFromDB();
     }
-
+    /// <summary>
+    /// Methode, um direkt aus der Liste die Eigenschaften eines Elementes anzuzeigen oder aber dieses Abzulegen (MessageBox)
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    
     private void RecentCalls_View_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        var x = (ListView)sender;
-        var y = (CallLog)x.SelectedItem;
-
-        if (y != null)
-        {
-            MessageBox.Show(y.Text);
-        }
-
-    }
-    //WIP
-    private void TESTO(object sender, MouseButtonEventArgs e)
     {
         var x = (ListView)sender;
         var y = (CallLog)x.SelectedItem;
@@ -67,10 +67,13 @@ public partial class MainWindow : Window
             DBManager.InsertCallInHistoryDB(y);
             DBManager.RemoveCallFromDB(y.CallID);
 
-            
+
         }
     }
-
+    /// <summary>
+    /// Convertmethode für den boolschen Wert (-> SQL)
+    /// </summary>
+    /// <returns></returns>
     private int ConvertBoolToInt()
     {
         var ret = MedicalChkBx.IsChecked;
@@ -83,6 +86,10 @@ public partial class MainWindow : Window
             return 0;
         }
     }
+    /// <summary>
+    /// Work in Progress - Anzeige noch nicht finalisiert
+    /// </summary>
+    /// <returns></returns>
     private string GetBounding()
     {
         var ret = OutBoundChkBx.IsChecked;
@@ -95,7 +102,11 @@ public partial class MainWindow : Window
             return "Eingehend";
         }
     }
-
+    /// <summary>
+    /// Button-Methode zum Öffnen des Archivs
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Open_Archive(object sender, RoutedEventArgs e)
     {
         CallArchive cal = new CallArchive();

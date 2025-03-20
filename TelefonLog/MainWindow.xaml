@@ -17,7 +17,7 @@
         <Button Content="Speichern" HorizontalAlignment="Left" Margin="29,436,0,0" VerticalAlignment="Top" Height="30" Width="123" Click="SaveCallInDB"/>
         <Button Content="Archiv" HorizontalAlignment="Left" Margin="29,484,0,0" VerticalAlignment="Top" Height="30" Width="123" Click="Open_Archive" />
 
-        <ListView x:Name="RecentCalls_View" Margin="325,28,10,39" MouseDoubleClick="TESTO">
+        <ListView x:Name="RecentCalls_View" Margin="325,28,10,39" MouseDoubleClick="RecentCalls_View_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CName}"/>

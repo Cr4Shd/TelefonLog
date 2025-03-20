@@ -13,6 +13,10 @@ namespace TelefonLog.Utils
     {
         public delegate void DBItemUpdate();
         public static event DBItemUpdate OnDBItemUpdate;
+
+        /// <summary>
+        /// Erstellt die Datenbank für aktive Vorgänge
+        /// </summary>
         public static void CreateDatabase()
         {
             try
@@ -40,7 +44,9 @@ namespace TelefonLog.Utils
             }
         }
 
-        //WIP - Hier soll eine Funktion entstehen die die anrufe als erledigt markieren und sie dann in einer DB extra abspeichern kann
+        /// <summary>
+        /// Erstellt die Archivdatenbank
+        /// </summary>
         public static void CreateHistoryDB()
         {
             try
@@ -68,6 +74,10 @@ namespace TelefonLog.Utils
                 Debug.WriteLine("Datenbank schon vorhanden");
             }
         }
+        /// <summary>
+        /// Speichert einen Vorgang in der Datenbank für aktive Vorgänge
+        /// </summary>
+        /// <param name="cl"></param>
         public static void InsertCallInDB(CallLog cl)
         {
             var ent0 = cl.CName;
@@ -90,7 +100,10 @@ namespace TelefonLog.Utils
             OnItemUpdate();
 
         }
-        //WIP
+        /// <summary>
+        /// Speichert einen Vorgang in der Archivdatenbank
+        /// </summary>
+        /// <param name="cl"></param>
         public static void InsertCallInHistoryDB(CallLog cl)
         {
             var ent0 = cl.CName;
@@ -111,7 +124,10 @@ namespace TelefonLog.Utils
                 command.ExecuteNonQuery();
             }
         }
-        // DO NOT TOUCH!!! :D Hier keine Logik für die GUID, da diese niemals angezeigt wird
+        /// <summary>
+        /// Lädt alle aktiven Vorgänge aus der Aktivdatenbank und wird als aktualisierungsmethode für die ListView genutzt
+        /// </summary>
+        /// <returns></returns>
         public static ObservableCollection<CallLog>? GetAllCallsFromDB()
         {
             ObservableCollection<CallLog> tempLogs = new();
@@ -138,6 +154,10 @@ namespace TelefonLog.Utils
             }
             return tempLogs;
         }
+        /// <summary>
+        /// Lädt alle archivierten Vorgänge aus der Archivdatenbank
+        /// </summary>
+        /// <returns></returns>
         public static ObservableCollection<CallLog>? GetAllCallsFromArchivesDB()
         {
             ObservableCollection<CallLog> tempLogs = new();
@@ -164,7 +184,10 @@ namespace TelefonLog.Utils
             }
             return tempLogs;
         }
-
+        /// <summary>
+        /// Speichert einen aktiven Vorgang in der Archivdatenbank und löscht diesen danach aus der aktiven Datenkbank
+        /// </summary>
+        /// <param name="id"></param>
         public static void RemoveCallFromDB(string id) //Das löschen via DELETE * FROM Anrufe funktioniert ohne Probleme! MIt ID löscht er nicht, bedeutet das da wahrscheinlich ein Problem beim Indikator ist
         {
             using (var connection = new SqliteConnection("Data Source = AnrufDatenbank.db"))
@@ -178,7 +201,9 @@ namespace TelefonLog.Utils
             }
             OnItemUpdate();
         }
-
+        /// <summary>
+        /// Eventmethode
+        /// </summary>
         public static void OnItemUpdate()
         {
             if(OnDBItemUpdate != null)
