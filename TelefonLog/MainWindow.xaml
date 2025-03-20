@@ -5,29 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TelefonLog"
         mc:Ignorable="d"
-        Title="Teltis-VorgangsLog" Height="600" Width="800">
+        Title="Teltis-VorgangsLog" Height="627" Width="800">
     <Grid>
 
         <TextBox x:Name="Name_txfld" HorizontalAlignment="Left" Margin="29,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272" Height="23"/>
         <TextBox x:Name="Message_txfld" HorizontalAlignment="Left" Margin="29,79,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272" Height="213"/>
         <TextBox x:Name="Time_txfld" HorizontalAlignment="Left" Margin="29,325,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="162"/>
         <TextBox x:Name="TelNum_txfld" HorizontalAlignment="Left" Margin="29,379,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="162"/>
-        <Button Content="Speichern" HorizontalAlignment="Left" Margin="29,411,0,0" VerticalAlignment="Top" Height="57" Width="245" Click="SaveCallInDB"/>
+        <CheckBox x:Name="MedicalChkBx" Content="Arztpraxis" HorizontalAlignment="Left" Margin="211,326,0,0" VerticalAlignment="Top" Width="90"/>
+        <CheckBox Content="Ausgehend" HorizontalAlignment="Left" Margin="211,380,0,0" VerticalAlignment="Top" x:Name="OutBoundChkBx"/>
+        <Button Content="Speichern" HorizontalAlignment="Left" Margin="29,436,0,0" VerticalAlignment="Top" Height="30" Width="123" Click="SaveCallInDB"/>
+        <Button Content="Archiv" HorizontalAlignment="Left" Margin="29,484,0,0" VerticalAlignment="Top" Height="30" Width="123" Click="Open_Archive" />
 
-        <ListView x:Name="RecentCalls_View" Margin="325,28,10,39" MouseDoubleClick="RecentCalls_View_MouseDoubleClick">
+        <ListView x:Name="RecentCalls_View" Margin="325,28,10,39" MouseDoubleClick="TESTO">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CName}"/>
                     <GridViewColumn Header="Datum" DisplayMemberBinding="{Binding DateTime}"/>
-                    <GridViewColumn Header="Zeit" DisplayMemberBinding="{Binding Time}"/>
+                    <GridViewColumn Header="Abw. Zeit" DisplayMemberBinding="{Binding Time}"/>
                     <GridViewColumn Header="Mitteilung" DisplayMemberBinding="{Binding Text}"/>
                     <GridViewColumn Header="Telefonnummer" DisplayMemberBinding="{Binding CallBackNumber}"/>
+                    <GridViewColumn Header="Praxis" DisplayMemberBinding="{Binding IsMedical}"/>
+                    <GridViewColumn Header="Ausgehend" DisplayMemberBinding="{Binding Callbound}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Label Content="Person/Vorgang" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Width="197" Height="25"/>
-        <Label Content="Anrufzeit" HorizontalAlignment="Left" Margin="29,297,0,0" VerticalAlignment="Top" Width="123"/>
-        <Label Content="TelNummer" HorizontalAlignment="Left" Margin="29,348,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Content="Abweichende Zeit" HorizontalAlignment="Left" Margin="29,297,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label Content="Telefonnummer" HorizontalAlignment="Left" Margin="29,348,0,0" VerticalAlignment="Top" Width="99"/>
+
 
 
     </Grid>

@@ -1,0 +1,17 @@
+- Ich brauche ein ID System für die Datenbanken
+Vielleicht ein fortlaufender Zähler? Oder eine GUID? 
+Die GUID könnte in der DB gespeichert werden {
+1. Bräuchte keine extra generation logik - kann direkt aus .net kreiert werden
+2. Wäre nur für den Löschzugriff gedacht
+}
+
+1. GUID ins Objekt + GeneratorLogik
+2. Datenbankspeichern und abruf auf die neuen Objekte einstellen
+3. UI xaml muss nicht bearbeitet werden - die GUID soll zwar gespeichert aber niemals angezeigt werden
+
+unbedingt die Verlinkung innnerhalb der MainxamlWindow wiederherstellen - Das dobuleclickmouse event ist momentan an die methode TESTO angehängt
+
+
+1. Stand der Dínge - Momentan wird die MEthode zum löschen einzelener Datensätze mittels GUID im objekt realisiert
+2. Es wäre vielleicht eine gute idee den ganzen spass in LINQ zu verfassen - hatte ich damals für listen genutzt, vielleicht geht das ja auch mit LINQ?
+3. Es bleibt spannend... ^^
