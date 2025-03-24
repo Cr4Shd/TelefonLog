@@ -16,6 +16,7 @@
         <CheckBox Content="Ausgehend" HorizontalAlignment="Left" Margin="211,380,0,0" VerticalAlignment="Top" x:Name="OutBoundChkBx"/>
         <Button Content="Speichern" HorizontalAlignment="Left" Margin="29,436,0,0" VerticalAlignment="Top" Height="30" Width="123" Click="SaveCallInDB"/>
         <Button Content="Archiv" HorizontalAlignment="Left" Margin="29,484,0,0" VerticalAlignment="Top" Height="30" Width="123" Click="Open_Archive" />
+        <Button Content="Löschen" HorizontalAlignment="Left" Margin="178,436,0,0" VerticalAlignment="Top" Width="123" Height="30" Click="Remove_Entry" />
 
         <ListView x:Name="RecentCalls_View" Margin="325,28,10,39" MouseDoubleClick="RecentCalls_View_MouseDoubleClick">
             <ListView.View>
@@ -33,6 +34,7 @@
         <Label Content="Person/Vorgang" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Width="197" Height="25"/>
         <Label Content="Abweichende Zeit" HorizontalAlignment="Left" Margin="29,297,0,0" VerticalAlignment="Top" Width="123"/>
         <Label Content="Telefonnummer" HorizontalAlignment="Left" Margin="29,348,0,0" VerticalAlignment="Top" Width="99"/>
+
 
 
 
