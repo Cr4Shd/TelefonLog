@@ -25,6 +25,30 @@ namespace TelefonLog
             
             InitializeComponent();
             this.CallsArchive_ListView.ItemsSource = DBManager.GetAllCallsFromArchivesDB();
+            DBManager.OnDBItemUpdate += PopulateCalls;
+        }
+
+        private void Retrieve_From_DB(object sender, RoutedEventArgs e)
+        {
+            var x = (CallLog)CallsArchive_ListView.SelectedItem;
+            DBManager.InsertCallInDB(x);
+            DBManager.RemoveCallFromHistoryDB(x.CallID);
+            DBManager.OnItemUpdate();
+        }
+        private void PopulateCalls()
+        {
+            this.CallsArchive_ListView.ItemsSource = DBManager.GetAllCallsFromArchivesDB();
+        }
+        private void Move_Call_BackToActive(object sender, MouseButtonEventArgs e)
+        {
+            var x = (ListView)sender;
+            var y = (CallLog)x.SelectedItem;
+
+            if (MessageBox.Show(y.Text, "Soll der Anruf wieder in die aktive Datenbank geschrieben werden?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                DBManager.InsertCallInDB(y);
+                DBManager.RemoveCallFromHistoryDB(y.CallID);
+            }
         }
     }
 }

@@ -15,3 +15,6 @@ unbedingt die Verlinkung innnerhalb der MainxamlWindow wiederherstellen - Das do
 1. Stand der Dínge - Momentan wird die MEthode zum löschen einzelener Datensätze mittels GUID im objekt realisiert
 2. Es wäre vielleicht eine gute idee den ganzen spass in LINQ zu verfassen - hatte ich damals für listen genutzt, vielleicht geht das ja auch mit LINQ?
 3. Es bleibt spannend... ^^
+
+1. Das Archiv könnte eine Funktion gebrauchen den Vorgang auch wieder in die Aktuelle DB zu holen
+2. Spiegelmethode RemoveCallFromDB

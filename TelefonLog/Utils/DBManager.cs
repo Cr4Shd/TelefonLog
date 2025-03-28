@@ -188,7 +188,7 @@ namespace TelefonLog.Utils
         /// Speichert einen aktiven Vorgang in der Archivdatenbank und löscht diesen danach aus der aktiven Datenkbank
         /// </summary>
         /// <param name="id"></param>
-        public static void RemoveCallFromDB(string id) //Das löschen via DELETE * FROM Anrufe funktioniert ohne Probleme! MIt ID löscht er nicht, bedeutet das da wahrscheinlich ein Problem beim Indikator ist
+        public static void RemoveCallFromDB(string id) 
         {
             using (var connection = new SqliteConnection("Data Source = AnrufDatenbank.db"))
             {
@@ -201,6 +201,26 @@ namespace TelefonLog.Utils
             }
             OnItemUpdate();
         }
+        
+
+        public static void RemoveCallFromHistoryDB(string id)
+        {
+            using(var connection = new SqliteConnection("Data Source = AnrufDatenbankVerlauf.db"))
+            {
+                var command = connection.CreateCommand();
+                StringBuilder build = new();
+                build.Append($@"DELETE FROM AnrufVerlauf WHERE CallID = '{id}'");
+                command.CommandText = build.ToString();
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            OnItemUpdate();
+        }
+
+
+
+
+
         /// <summary>
         /// Eventmethode
         /// </summary>

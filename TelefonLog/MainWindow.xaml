@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TelefonLog"
         mc:Ignorable="d"
-        Title="Teltis-VorgangsLog" Height="627" Width="800">
+        Title="Teltis-VorgangsLog" Height="625" Width="900">
     <Grid>
 
         <TextBox x:Name="Name_txfld" HorizontalAlignment="Left" Margin="29,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="272" Height="23"/>

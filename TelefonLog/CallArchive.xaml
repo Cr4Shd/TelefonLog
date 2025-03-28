@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="CallArchive" Height="450" Width="841">
     <Grid>
-        <ListView x:Name="CallsArchive_ListView" Margin="25,34,25,33">
+        <ListView x:Name="CallsArchive_ListView" Margin="25,34,25,33" MouseDoubleClick="Move_Call_BackToActive">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding CName}"/>
@@ -20,6 +20,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
 
     </Grid>
 </Window>
