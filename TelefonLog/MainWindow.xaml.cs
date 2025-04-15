@@ -115,9 +115,13 @@ public partial class MainWindow : Window
 
     private void Remove_Entry(object sender, RoutedEventArgs e)
     {
-        var x = RecentCalls_View.SelectedItem;
-        var y = (CallLog)x;
-        
-        DBManager.RemoveCallFromDB(y.CallID);
+        if (RecentCalls_View.SelectedItem != null)
+        {
+            var x = RecentCalls_View.SelectedItem;
+            var y = (CallLog)x;
+
+            DBManager.RemoveCallFromDB(y.CallID);
+        }
+
     }
 }
